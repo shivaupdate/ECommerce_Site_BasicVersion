@@ -1,0 +1,10 @@
+<div class="sticky-top d-block header" id="myHeader">
+	<h2>Total Selected Price = {{totalPrice}}</h2>
+	<h2>Total discountedPrice Selected Price = {{totalDiscountedPrice}}</h2>
+</div>
+<div class="content">
+	<div *ngFor="let item of productList">
+		<app-product-card [title]="item.name" [imageUrl]="item.imageUrl" [description]="item.description"
+			[price]="item.price" [discountedPrice]="item.discountedPrice" (QuantityChange)="UpdateQuantityChange($event)"></app-product-card>
+	</div>
+</div>

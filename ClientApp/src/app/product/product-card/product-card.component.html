@@ -1,0 +1,28 @@
+<mat-card>
+	<mat-card-header class="text-light bg-dark">
+		<mat-card-title class="mt-2">
+			<p>{{title}}</p>
+		</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<div class="row">
+			<div class="col-md-4 mt-3">
+				<img mat-card-image class="example-header-image" src="{{imageUrl}}"/>
+      </div>
+			</div>
+			<div class="row">
+				<div class="col-md-4  mt-2">
+					{{description}} - Rs {{price}} each - DiscountedPrice - Rs {{discountedPrice}}
+				</div>
+				<div class="col-md-2 text-center mt-2">
+					Qty:
+					<select [(ngModel)]="selectedQuantity">
+          <option *ngFor="let c of quantity" [ngValue]="c">{{c}}</option>
+        </select>
+				</div>
+				<div class="col-md-6 text-left">
+					<button mat-buttons class="btn btn-primary" (click)="emitUserSelectedProdut(title, price)">{{buttonText}}</button>
+				</div>
+			</div>
+	</mat-card-content>
+</mat-card>
