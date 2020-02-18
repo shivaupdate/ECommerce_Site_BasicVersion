@@ -1,6 +1,6 @@
 <div class="sticky-top d-block header" id="myHeader">
-	<h2>Total Selected Price = {{totalPrice}}</h2>
-	<h2>Total discountedPrice Selected Price = {{totalDiscountedPrice}}</h2>
+	<h2>Total discounted Price in CART = {{totalDiscountedPrice}}</h2>
+	<h2>Your Savings = {{(totalPrice- totalDiscountedPrice)}}</h2>
 </div>
 <div class="content">
 	<div *ngFor="let item of productList">

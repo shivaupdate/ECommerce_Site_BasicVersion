@@ -31,7 +31,7 @@ namespace DiscountSystem_ECommerce.Controllers
                 ProductId = 1,
 
             };
-            objProd1._appliedDiscount.Add(new PercentageDiscount(0.1M));
+            objProd1.discounts.Add(new PercentageDiscount(10));
             objProducts.Add(objProd1);
             objProd1 = new Products()
             {
@@ -51,22 +51,21 @@ namespace DiscountSystem_ECommerce.Controllers
                 ProductId = 4
             };
             objProducts.Add(objProd1);
-            return objProducts
-                      .ToArray();
+            return objProducts.ToArray();
 
         }
         [HttpPost]
-        [Route("Product/AddOrUpdateCart")]
+        [Route("AddOrUpdateCart")]
         public  Cart AddOrUpdateCart(Cart selectedProducts)
         {
             IEnumerable<Products> obj = Get();
             var selectedProduct = obj.FirstOrDefault(x => x.Name == selectedProducts.name);
-             selectedProducts.discountedPrice= ApplyDiscount(selectedProducts.ItemPrice, selectedProducts.quantity, selectedProduct._appliedDiscount);
+             selectedProducts.discountedPrice= ApplyDiscount(selectedProducts.ItemPrice, selectedProducts.quantity, selectedProduct.discounts);
             return selectedProducts;
         }
      
 
-        private  decimal ApplyDiscount(int price, int quantity, IList<IDiscount> discounts)
+        private decimal ApplyDiscount(int price, int quantity, IList<IDiscount> discounts)
         {
             decimal discountedPrice = price;
 

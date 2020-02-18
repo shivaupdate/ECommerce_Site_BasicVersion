@@ -11,13 +11,16 @@ namespace DiscountSystem_ECommerce
         {
             PercentDiscount = percentDiscount;
         }
-
         public decimal PercentDiscount { get; }
+        string _discountDescr;
+        string IDiscount.DiscountDescription { get => _discountDescr; set => _discountDescr = "Percentage Discount"; }
+
+
 
         public decimal ApplyDiscount(decimal productPrice, int quantity)
         {
             var totalPrice = productPrice * quantity;
-            return totalPrice - (totalPrice * PercentDiscount);
+            return totalPrice - (totalPrice * PercentDiscount/100);
         }
     }
     public class FixPriceDiscount : IDiscount
@@ -28,7 +31,8 @@ namespace DiscountSystem_ECommerce
         {
             PriceDiscount = priceDiscount;
         }
-
+        string _discountDescr;
+        string IDiscount.DiscountDescription { get => _discountDescr; set => _discountDescr = "Fixed Price Discount"; }
         public decimal ApplyDiscount(decimal productPrice, int quantity)
         {
             var totalPrice = productPrice * quantity;
@@ -44,11 +48,13 @@ namespace DiscountSystem_ECommerce
         {
             PriceDiscount = priceDiscount;
         }
+        string _discountDescr;
+        string IDiscount.DiscountDescription { get => _discountDescr; set => _discountDescr = "BuyX GetY Discount"; }
 
         public decimal ApplyDiscount(decimal productPrice, int quantity)
         {
-            var totalPrice = productPrice * quantity;
-            return totalPrice - PriceDiscount;
+            //Future implementation
+            return productPrice;
         }
     }
     public class BuyXForYDiscount : IDiscount
@@ -59,11 +65,12 @@ namespace DiscountSystem_ECommerce
         {
             PriceDiscount = priceDiscount;
         }
-
+        string _discountDescr;
+        string IDiscount.DiscountDescription { get => _discountDescr; set => _discountDescr = "BuyXForY Discount"; }
         public decimal ApplyDiscount(decimal productPrice, int quantity)
         {
-            var qualifiedDiscountQuantity = quantity;
-            return qualifiedDiscountQuantity - PriceDiscount;
+            //Future implementation
+            return productPrice;
         }
     }
 }

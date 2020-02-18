@@ -25,7 +25,7 @@ export class ProductsService {
 
   public addtoCart(selectedProducts:userSelectedQuantity): Observable<any> {
  
-    return this.http.post(this.baseurl +'Product/Product/AddOrUpdateCart', selectedProducts, this.httpOptions)
+    return this.http.post(this.baseurl +'Product/AddOrUpdateCart', selectedProducts, this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.errorHandl)

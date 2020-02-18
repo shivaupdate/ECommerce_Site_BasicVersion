@@ -11,7 +11,7 @@ namespace DiscountSystem_ECommerce
         public int Price { get; set; }
         public string ImageUrl { get; set; }
 
-        public readonly List<IDiscount> _appliedDiscount = new List<IDiscount>();
+        public List<IDiscount> discounts = new List<IDiscount>();
         
         
     }

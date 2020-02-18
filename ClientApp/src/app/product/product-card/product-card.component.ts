@@ -32,7 +32,7 @@ export class ProductCardComponent implements OnInit {
     this.QuantityChange.emit({
       quantity: this.selectedQuantity,
       name: title,
-      ItemPrice: price,
+      itemPrice: price,
       discountedPrice:0
     });
   }
